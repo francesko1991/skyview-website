@@ -4011,6 +4011,40 @@ body.is-explore-scrolling .grid-pattern-squares rect {
   .explore-arrow-tip-2 { animation-duration: 5s; }
 }
 
+/* ─── Booking modal — mobile-first sheet layout ───────────────────────
+   The shell is a flex column so the header sits at the top (non-shrinking),
+   the body scrolls in the middle, and the modal can never exceed the
+   dynamic viewport height. Safe-area-inset envs let the header clear the
+   iOS notch and let the body's last button clear the home indicator.
+   ----------------------------------------------------------------------- */
+.sv-booking-shell {
+  /* dvh accounts for iOS Safari's collapsing URL bar; vh is the fallback */
+  max-height: 100vh;
+  max-height: 100dvh;
+}
+.sv-booking-head {
+  /* Clear the notch / status bar on mobile, fall back to 16px elsewhere */
+  padding-top: max(16px, env(safe-area-inset-top));
+  padding-bottom: 16px;
+}
+.sv-booking-body {
+  padding-top: 20px;
+  /* Clear the home indicator / browser chrome bottom bar — never less
+     than 20px so the last action button has breathing room */
+  padding-bottom: max(20px, calc(env(safe-area-inset-bottom) + 20px));
+}
+
+@media (min-width: 640px) {
+  .sv-booking-shell {
+    /* Desktop: cap below full height so the backdrop is visible above
+       and below the centered modal */
+    max-height: 92vh;
+    max-height: 92dvh;
+  }
+  .sv-booking-head { padding-top: 18px; padding-bottom: 18px; }
+  .sv-booking-body { padding-top: 24px; padding-bottom: 24px; }
+}
+
 /* ─── Booking modal — success view animations ─── */
 
 /* Stroke-draw on the confirmation checkmark. Path length on the M5,12.5

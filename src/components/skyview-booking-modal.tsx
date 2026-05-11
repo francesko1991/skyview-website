@@ -191,12 +191,12 @@ export function SkyViewBookingModal({ open, onClose }: SkyViewBookingModalProps)
       onMouseDown={onClose}
     >
       <div
-        className="relative w-full max-w-2xl overflow-hidden border border-white/15 bg-[#07080b] text-white shadow-2xl sm:rounded-2xl"
+        className="sv-booking-shell relative flex w-full max-w-2xl flex-col overflow-hidden border border-white/15 bg-[#07080b] text-white shadow-2xl sm:rounded-2xl"
         onMouseDown={(event) => event.stopPropagation()}
       >
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(103,181,230,0.16),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.04),transparent)]" />
 
-        <div className="relative border-b border-white/10 px-5 py-4 sm:px-6">
+        <div className="sv-booking-head relative shrink-0 border-b border-white/10 px-5 sm:px-6">
           <div className="flex items-start justify-between gap-4">
             <div>
               <p className="font-mono text-xs uppercase tracking-[0.32em] text-sky-300">
@@ -214,14 +214,14 @@ export function SkyViewBookingModal({ open, onClose }: SkyViewBookingModalProps)
               type="button"
               onClick={onClose}
               aria-label="Close booking modal"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/70 transition hover:border-sky-300/50 hover:bg-white/5 hover:text-white"
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 text-white/70 transition hover:border-sky-300/50 hover:bg-white/5 hover:text-white"
             >
               ×
             </button>
           </div>
         </div>
 
-        <div className="relative max-h-[78vh] overflow-y-auto px-5 py-5 sm:px-6 sm:py-6">
+        <div className="sv-booking-body relative flex-1 overflow-y-auto px-5 sm:px-6">
           {!submitted ? (
             <>
               {!isComplete ? (
