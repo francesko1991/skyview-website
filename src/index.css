@@ -1,0 +1,8 @@
+/* The brutalist/blueprint aesthetic lives in the global stylesheet.
+   It must come BEFORE Tailwind directives because @import has to precede
+   all other rules in CSS. Tailwind layers above it for new shadcn components. */
+@import url('../styles.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
